@@ -20,4 +20,11 @@ class Language extends Model
     {
         return $this->hasMany(NativeStory::class);
     }
+
+    
+    public function languageGroup()
+    {
+        return $this->belongsTo(LanguageGroup::class);
+    }
+
 }

@@ -9,15 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code', 5)->unique();
+            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->foreignId('language_group_id')->nullable()->constrained('language_groups')->onDelete('set null');
+            $table->string('emoji')->nullable();
+            $table->string('symbol_image')->nullable();
+            $table->string('people_image')->nullable();
+            $table->json('counties')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

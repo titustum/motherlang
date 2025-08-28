@@ -18,4 +18,11 @@ class EnglishConcept extends Model
     {
         return $this->hasMany(Translation::class);
     }
+
+
+    public function category()
+    {
+        return $this->belongsTo(ConceptCategory::class, 'concept_category_id');
+    }
+
 }
