@@ -32,11 +32,12 @@ class EnglishConceptsTable
                     ->sortable()
                     ->badge(),
 
-                TextColumn::make('category.name')
+                TextColumn::make('category')
                     ->label('Category')
                     ->sortable()
-                    ->searchable(),
-
+                    ->searchable()
+                    ->formatStateUsing(fn($record) => $record->category->emoji . ' ' . $record->category->name),
+                
                 TextColumn::make('category.emoji')
                     ->label('📌')
                     ->sortable()

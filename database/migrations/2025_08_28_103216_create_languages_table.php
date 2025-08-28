@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('code')->unique();
+            $table->string('slug')->unique();
             $table->foreignId('language_group_id')->nullable()->constrained('language_groups')->onDelete('set null');
             $table->string('emoji')->nullable();
             $table->string('symbol_image')->nullable();

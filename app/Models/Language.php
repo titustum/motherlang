@@ -8,8 +8,13 @@ class Language extends Model
 {
     protected $fillable = [
         'name',
-        'code',
+        'slug',
     ];
+
+    protected $casts = [
+        'counties' => 'array',
+    ];
+
 
     public function translations()
     {
@@ -26,5 +31,12 @@ class Language extends Model
     {
         return $this->belongsTo(LanguageGroup::class);
     }
+
+    // use slug in route bindings
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
 
 }
