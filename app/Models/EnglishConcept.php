@@ -25,4 +25,6 @@ class EnglishConcept extends Model
         return $this->belongsTo(ConceptCategory::class, 'concept_category_id');
     }
 
+
+
 }
