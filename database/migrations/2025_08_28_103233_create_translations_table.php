@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('english_concept_id')->constrained()->onDelete('cascade');
+            $table->foreignId('language_id')->constrained()->onDelete('cascade');
+            $table->string('translation');
+            $table->text('description')->nullable();
+            $table->string('context_image_path')->nullable();
             $table->timestamps();
+
+            $table->unique(['english_concept_id', 'language_id'], 'unique_translation');
         });
     }
 

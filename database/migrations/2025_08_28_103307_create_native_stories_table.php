@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('native_stories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('language_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->longText('content');
+            $table->string('featured_image_path')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
     }

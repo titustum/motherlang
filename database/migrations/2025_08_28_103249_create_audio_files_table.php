@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('audio_files', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('translation_id')->constrained()->onDelete('cascade');
+            $table->string('file_path');
+            $table->foreignId('uploaded_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
